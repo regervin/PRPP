@@ -9,12 +9,11 @@ import {
   Copy, 
   Download, 
   Star,
+  Clock,
+  Target,
   CheckCircle,
   AlertCircle,
-  Loader2,
-  Settings,
-  FileText,
-  Target
+  Loader2
 } from 'lucide-react'
 
 interface ReviewGeneratorProps {
@@ -27,21 +26,21 @@ export default function ReviewGenerator({ onClose }: ReviewGeneratorProps) {
   const [tone, setTone] = useState('professional')
   const [isGenerating, setIsGenerating] = useState(false)
   const [generatedReview, setGeneratedReview] = useState('')
-  const [productData, setProductData] = useState<any>(null)
+  const [productInfo, setProductInfo] = useState<any>(null)
   const [step, setStep] = useState(1)
 
   const reviewTypes = [
     { id: 'detailed', name: 'Detailed Review', description: 'Comprehensive analysis with pros/cons' },
     { id: 'quick', name: 'Quick Review', description: 'Concise overview for busy readers' },
     { id: 'comparison', name: 'Comparison Review', description: 'Compare with similar products' },
-    { id: 'buyer-guide', name: 'Buyer\'s Guide', description: 'Educational review format' }
+    { id: 'buyer-guide', name: 'Buyer\'s Guide', description: 'Help readers make decisions' }
   ]
 
-  const toneOptions = [
+  const tones = [
     { id: 'professional', name: 'Professional', description: 'Authoritative and trustworthy' },
     { id: 'casual', name: 'Casual', description: 'Friendly and conversational' },
     { id: 'enthusiastic', name: 'Enthusiastic', description: 'Excited and energetic' },
-    { id: 'skeptical', name: 'Skeptical', description: 'Critical and analytical' }
+    { id: 'critical', name: 'Critical', description: 'Balanced with honest critique' }
   ]
 
   const handleAnalyze = async () => {
@@ -52,7 +51,7 @@ export default function ReviewGenerator({ onClose }: ReviewGeneratorProps) {
     
     // Simulate API call to analyze the product page
     setTimeout(() => {
-      setProductData({
+      setProductInfo({
         title: "Premium Wireless Noise-Canceling Headphones",
         price: "$299.99",
         rating: 4.5,
@@ -63,13 +62,17 @@ export default function ReviewGenerator({ onClose }: ReviewGeneratorProps) {
           "Hi-Res Audio certified",
           "Quick charge technology"
         ],
-        benefits: [
-          "Block out distractions completely",
-          "All-day listening comfort",
-          "Studio-quality sound",
-          "Perfect for travel and work"
+        pros: [
+          "Exceptional sound quality",
+          "Comfortable for long sessions",
+          "Excellent noise cancellation",
+          "Long battery life"
         ],
-        description: "Experience unparalleled audio quality with our premium wireless headphones featuring industry-leading noise cancellation technology."
+        cons: [
+          "Premium price point",
+          "Bulky design",
+          "Limited color options"
+        ]
       })
       setStep(3)
       setIsGenerating(false)
@@ -78,53 +81,58 @@ export default function ReviewGenerator({ onClose }: ReviewGeneratorProps) {
 
   const handleGenerate = async () => {
     setIsGenerating(true)
+    setStep(4)
     
     // Simulate review generation
     setTimeout(() => {
-      setGeneratedReview(`# ${productData.title} Review: Worth Every Penny?
+      setGeneratedReview(`# Premium Wireless Noise-Canceling Headphones Review
 
-## Quick Verdict ⭐⭐⭐⭐⭐
-After extensive testing, these headphones deliver exceptional value at $299.99. The combination of superior noise cancellation, premium build quality, and outstanding battery life makes them a top choice for audiophiles and frequent travelers.
+## Overview
+After extensively testing the Premium Wireless Noise-Canceling Headphones for over two weeks, I can confidently say these headphones deliver on their promise of premium audio quality and comfort. Priced at $299.99, they position themselves in the high-end market segment, competing directly with industry leaders.
 
-## What Makes These Headphones Special?
+## Key Features That Stand Out
 
-### Outstanding Features
-- **Active Noise Cancellation**: Industry-leading technology that blocks 95% of ambient noise
-- **30-Hour Battery Life**: Unmatched endurance for long flights and extended use
-- **Premium Materials**: Genuine leather ear cups and durable metal construction
-- **Hi-Res Audio**: Certified for studio-quality sound reproduction
-- **Quick Charge**: 15 minutes charging provides 3 hours of playback
+### 🎵 **Exceptional Sound Quality**
+The Hi-Res Audio certification isn't just marketing fluff. These headphones reproduce audio with remarkable clarity across all frequencies. The bass is punchy without being overwhelming, mids are crystal clear, and highs are crisp without any harshness.
 
-### Real-World Performance
-During my 2-week testing period, these headphones consistently impressed. The noise cancellation is remarkably effective - perfect for airplane travel and noisy offices. Sound quality is crisp and balanced across all frequencies.
+### 🔇 **Active Noise Cancellation**
+The ANC technology is truly impressive. Whether you're on a busy street, in a coffee shop, or on an airplane, these headphones create a peaceful bubble around you. The noise cancellation adapts intelligently to your environment.
 
-## Pros & Cons
+### 🔋 **Outstanding Battery Life**
+The claimed 30-hour battery life is accurate in real-world usage. Even with ANC enabled, I consistently got 28-30 hours of playback. The quick charge feature gives you 5 hours of playback with just 15 minutes of charging.
 
-### ✅ Pros
-- Exceptional noise cancellation
-- Comfortable for extended wear
-- Outstanding battery life
-- Premium build quality
-- Quick charging capability
+## Pros and Cons
 
-### ❌ Cons
-- Premium price point
-- Slightly heavy for some users
-- Limited color options
+### ✅ **What I Loved**
+- **Comfort**: The premium leather ear cups are incredibly comfortable, even during 8+ hour sessions
+- **Build Quality**: Solid construction that feels like it will last for years
+- **Sound Isolation**: Perfect for focus work or travel
+- **Intuitive Controls**: Easy-to-use touch controls that actually work reliably
+
+### ❌ **Areas for Improvement**
+- **Price**: At $299.99, they're definitely an investment
+- **Size**: Bulkier than some competitors, less portable
+- **Color Options**: Limited to black and silver only
 
 ## Who Should Buy These?
-Perfect for:
-- Frequent travelers
-- Remote workers in noisy environments
-- Audiophiles seeking premium quality
-- Anyone wanting the best noise cancellation
 
-## Final Recommendation
-At $299.99, these headphones represent excellent value for the features provided. The combination of comfort, sound quality, and noise cancellation justifies the investment. **Highly recommended** for anyone serious about audio quality.
+These headphones are perfect for:
+- **Professionals** who need focus in noisy environments
+- **Travelers** who want premium comfort and noise isolation
+- **Audiophiles** seeking high-quality sound reproduction
+- **Content Creators** who need reliable audio for long sessions
 
-**Rating: 4.5/5 stars**`)
-      
-      setStep(4)
+## Final Verdict
+
+**Rating: ⭐⭐⭐⭐⭐ (4.5/5)**
+
+The Premium Wireless Noise-Canceling Headphones justify their premium price with exceptional performance across all key areas. While they're not the cheapest option, the combination of sound quality, comfort, and battery life makes them a worthwhile investment for serious users.
+
+**Bottom Line**: If you're looking for headphones that excel in every category and don't mind paying for quality, these are an excellent choice. However, if budget is a primary concern, you might want to consider more affordable alternatives.
+
+---
+
+*Disclaimer: This review is based on personal testing and experience. Individual results may vary.*`)
       setIsGenerating(false)
     }, 4000)
   }
@@ -150,45 +158,34 @@ At $299.99, these headphones represent excellent value for the features provided
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex p-6 border-b border-gray-200">
-            <div className="flex gap-3">
-              <div className="p-2 rounded-lg">
-                <Zap className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">Review Generator</h2>
-                <p className="text-gray-600">Transform any product page into a compelling review</p>
-              </div>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-lg"
-            >
-              <X className="w-6 h-6 text-gray-500" />
-            </button>
-          </div>
-
-          {/* Progress Steps */}
-          <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+          <div className="text-white p-6">
             <div className="flex">
-              {[
-                { num: 1, label: 'Input URL', icon: Globe },
-                { num: 2, label: 'Analyze Page', icon: Target },
-                { num: 3, label: 'Configure', icon: Settings },
-                { num: 4, label: 'Generate', icon: FileText }
-              ].map(({ num, label, icon: Icon }) => (
-                <div key={num} className="flex">
-                  <div className={`flex items-center justify-center w-10 h-10 rounded-full ${
-                    step >= num ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+              <div>
+                <h2 className="text-2xl font-bold">AI Review Generator</h2>
+                <p className="text-blue-100">Transform any product page into a compelling review</p>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-2 rounded-lg"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Progress Steps */}
+            <div className="flex mt-6">
+              {[1, 2, 3, 4].map((stepNum) => (
+                <div key={stepNum} className="flex">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    step >= stepNum ? 'bg-white text-blue-600' : 'bg-blue-500 text-white'
                   }`}>
-                    {step > num ? <CheckCircle className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
+                    {step > stepNum ? <CheckCircle className="w-5 h-5" /> : stepNum}
                   </div>
-                  <span className={`ml-2 text-sm font-medium ${
-                    step >= num ? 'text-blue-600' : 'text-gray-500'
-                  }`}>
-                    {label}
-                  </span>
-                  {num < 4 && <div className="w-8 bg-gray-300 mx-4" />}
+                  {stepNum < 4 && (
+                    <div className={`w-12 h-1 mx-2 ${
+                      step > stepNum ? 'bg-white' : 'bg-blue-500'
+                    }`} />
+                  )}
                 </div>
               ))}
             </div>
@@ -198,8 +195,8 @@ At $299.99, these headphones represent excellent value for the features provided
           <div className="p-6 overflow-y-auto">
             {step === 1 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 className="space-y-6"
               >
                 <div>
@@ -207,7 +204,7 @@ At $299.99, these headphones represent excellent value for the features provided
                     Product Sales Page URL
                   </label>
                   <div className="relative">
-                    <Globe className="absolute left-3 transform text-gray-400 w-5 h-5" />
+                    <Globe className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
                     <input
                       type="url"
                       value={url}
@@ -216,16 +213,58 @@ At $299.99, these headphones represent excellent value for the features provided
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-transparent"
                     />
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Enter the URL of the product sales page you want to review
-                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                    Review Type
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {reviewTypes.map((type) => (
+                      <button
+                        key={type.id}
+                        onClick={() => setReviewType(type.id)}
+                        className={`p-4 border rounded-lg text-left transition-all ${
+                          reviewType === type.id
+                            ? 'border-blue-500 bg-blue-50 text-blue-700'
+                            : 'border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="font-medium">{type.name}</div>
+                        <div className="text-sm text-gray-500 mt-1">{type.description}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                    Writing Tone
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {tones.map((toneOption) => (
+                      <button
+                        key={toneOption.id}
+                        onClick={() => setTone(toneOption.id)}
+                        className={`p-4 border rounded-lg text-left transition-all ${
+                          tone === toneOption.id
+                            ? 'border-purple-500 bg-purple-50 text-purple-700'
+                            : 'border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="font-medium">{toneOption.name}</div>
+                        <div className="text-sm text-gray-500 mt-1">{toneOption.description}</div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <button
                   onClick={handleAnalyze}
-                  disabled={!url || isGenerating}
-                  className="w-full text-white py-3 px-6 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg"
+                  disabled={!url}
+                  className="w-full text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex gap-2"
                 >
+                  <Zap className="w-5 h-5" />
                   Analyze Product Page
                 </button>
               </motion.div>
@@ -233,101 +272,88 @@ At $299.99, these headphones represent excellent value for the features provided
 
             {step === 2 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 className="py-12"
               >
                 <Loader2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Analyzing Product Page</h3>
-                <p className="text-gray-600">
-                  Our AI is extracting key information from the sales page...
-                </p>
+                <p className="text-gray-600">Our AI is extracting key information from the sales page...</p>
+                <div className="mt-6 text-sm text-gray-500">
+                  <div className="flex gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span>Page content extracted</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <Loader2 className="w-4 h-4 text-blue-500" />
+                    <span>Identifying key features...</span>
+                  </div>
+                  <div className="flex gap-2 opacity-50">
+                    <Clock className="w-4 h-4" />
+                    <span>Analyzing pricing and benefits</span>
+                  </div>
+                </div>
               </motion.div>
             )}
 
-            {step === 3 && productData && (
+            {step === 3 && productInfo && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 className="space-y-6"
               >
-                {/* Product Preview */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2">Product Detected:</h3>
-                  <div className="flex gap-4">
-                    <div className="w-16 h-16 rounded-lg flex">
-                      <Star className="w-8 h-8 text-blue-600" />
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <div className="flex gap-2 text-green-700 mb-2">
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="font-semibold">Analysis Complete!</span>
+                  </div>
+                  <p className="text-green-600 text-sm">
+                    We've successfully extracted all the key information from the product page.
+                  </p>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{productInfo.title}</h3>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold text-gray-700 mb-2">Key Features</h4>
+                      <ul className="space-y-1">
+                        {productInfo.features.map((feature: string, index: number) => (
+                          <li key={index} className="text-sm text-gray-600 flex gap-2">
+                            <Star className="w-3 h-3 text-yellow-500" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">{productData.title}</h4>
-                      <p className="text-blue-600 font-semibold">{productData.price}</p>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-4 h-4 ${
-                              i < Math.floor(productData.rating)
-                                ? 'text-yellow-400 fill-current'
-                                : 'text-gray-300'
-                            }`}
-                          />
-                        ))}
-                        <span className="text-sm text-gray-600 ml-1">({productData.rating})</span>
+                      <div className="mb-4">
+                        <span className="text-2xl font-bold text-green-600">{productInfo.price}</span>
+                        <div className="flex gap-1 mt-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`w-4 h-4 ${
+                                i < Math.floor(productInfo.rating)
+                                  ? 'text-yellow-400 fill-current'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          ))}
+                          <span className="text-sm text-gray-600 ml-1">
+                            ({productInfo.rating}/5)
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Review Type Selection */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Review Type
-                  </label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {reviewTypes.map((type) => (
-                      <button
-                        key={type.id}
-                        onClick={() => setReviewType(type.id)}
-                        className={`p-4 border rounded-lg text-left transition-all ${
-                          reviewType === type.id
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                      >
-                        <div className="font-medium text-gray-900">{type.name}</div>
-                        <div className="text-sm text-gray-600">{type.description}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tone Selection */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
-                    Writing Tone
-                  </label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {toneOptions.map((option) => (
-                      <button
-                        key={option.id}
-                        onClick={() => setTone(option.id)}
-                        className={`p-4 border rounded-lg text-left transition-all ${
-                          tone === option.id
-                            ? 'border-blue-500 bg-blue-50'
-                            : 'border-gray-200 hover:border-gray-300'
-                        }`}
-                      >
-                        <div className="font-medium text-gray-900">{option.name}</div>
-                        <div className="text-sm text-gray-600">{option.description}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
                 <button
                   onClick={handleGenerate}
-                  className="w-full text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg"
+                  className="w-full text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 flex gap-2"
                 >
+                  <Zap className="w-5 h-5" />
                   Generate Review
                 </button>
               </motion.div>
@@ -335,52 +361,87 @@ At $299.99, these headphones represent excellent value for the features provided
 
             {step === 4 && (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
                 className="space-y-6"
               >
                 {isGenerating ? (
                   <div className="py-12">
-                    <Loader2 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Generating Review</h3>
-                    <p className="text-gray-600">
-                      Creating your professional product review...
-                    </p>
+                    <Loader2 className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Generating Your Review</h3>
+                    <p className="text-gray-600">Creating a compelling, SEO-optimized review...</p>
+                    <div className="mt-6 text-sm text-gray-500">
+                      <div className="flex gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span>Structuring content</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        <span>Writing introduction</span>
+                      </div>
+                      <div className="flex gap-2">
+                        <Loader2 className="w-4 h-4 text-blue-500" />
+                        <span>Analyzing pros and cons...</span>
+                      </div>
+                      <div className="flex gap-2 opacity-50">
+                        <Clock className="w-4 h-4" />
+                        <span>Finalizing review</span>
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <>
-                    <div className="flex">
-                      <h3 className="text-xl font-semibold text-gray-900">Generated Review</h3>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={copyToClipboard}
-                          className="flex gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg"
-                        >
-                          <Copy className="w-4 h-4" />
-                          Copy
-                        </button>
-                        <button className="flex gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-                          <Download className="w-4 h-4" />
-                          Export
-                        </button>
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <div className="flex gap-2 text-green-700 mb-2">
+                        <CheckCircle className="w-5 h-5" />
+                        <span className="font-semibold">Review Generated Successfully!</span>
                       </div>
+                      <p className="text-green-600 text-sm">
+                        Your professional product review is ready. Copy it and use it on your website or blog.
+                      </p>
                     </div>
-                    
-                    <div className="bg-gray-50 rounded-lg p-6 max-h-96 overflow-y-auto">
-                      <pre className="text-sm text-gray-800">
-                        {generatedReview}
-                      </pre>
+
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <div className="flex mb-4">
+                        <h3 className="font-semibold text-gray-900">Generated Review</h3>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={copyToClipboard}
+                            className="flex gap-2 px-3 py-1 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700"
+                          >
+                            <Copy className="w-4 h-4" />
+                            Copy
+                          </button>
+                          <button className="flex gap-2 px-3 py-1 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700">
+                            <Download className="w-4 h-4" />
+                            Download
+                          </button>
+                        </div>
+                      </div>
+                      <div className="bg-white rounded-lg p-4 max-h-96 overflow-y-auto border">
+                        <pre className="text-sm text-gray-700">
+                          {generatedReview}
+                        </pre>
+                      </div>
                     </div>
 
                     <div className="flex gap-4">
                       <button
-                        onClick={() => setStep(1)}
-                        className="flex-1 border border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-50"
+                        onClick={() => {
+                          setStep(1)
+                          setGeneratedReview('')
+                          setProductInfo(null)
+                          setUrl('')
+                        }}
+                        className="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50"
                       >
                         Generate Another
                       </button>
-                      <button className="flex-1 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-lg">
-                        Save & Continue
+                      <button
+                        onClick={onClose}
+                        className="flex-1 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105"
+                      >
+                        Done
                       </button>
                     </div>
                   </>
