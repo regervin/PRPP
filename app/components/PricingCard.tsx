@@ -1,4 +1,3 @@
-import React from 'react';
 'use client'
 
 import { motion } from 'framer-motion'
@@ -30,27 +29,27 @@ export default function PricingCard({
       }`}
     >
       {popular && (
-        <div className="absolute transform">
-          <div className="text-white px-6 py-2 rounded-full text-sm font-semibold flex gap-2">
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
             <Star className="w-4 h-4" />
             Most Popular
           </div>
         </div>
       )}
 
-      <div className="mb-8">
+      <div className="text-center mb-8">
         <h3 className="text-2xl font-bold text-gray-900 mb-2">{name}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
-        <div className="flex">
+        <div className="flex items-baseline justify-center">
           <span className="text-5xl font-bold text-gray-900">{price}</span>
           <span className="text-gray-600 ml-1">{period}</span>
         </div>
       </div>
 
-      <ul className="mb-8">
+      <ul className="space-y-4 mb-8">
         {features.map((feature, index) => (
-          <li key={index} className="flex gap-3">
-            <Check className="w-5 h-5 text-green-500" />
+          <li key={index} className="flex items-center gap-3">
+            <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
             <span className="text-gray-700">{feature}</span>
           </li>
         ))}

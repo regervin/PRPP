@@ -108,6 +108,16 @@
             color: white;
         }
 
+        .btn-email {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .btn-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -213,53 +223,6 @@
         }
 
         .feature-card p {
-            color: #666;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            padding: 80px 0;
-            background: #f8fafc;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 2rem;
-        }
-
-        .step-number {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .step h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #1a202c;
-        }
-
-        .step p {
             color: #666;
         }
 
@@ -457,6 +420,10 @@
             border-radius: 12px 12px 0 0;
         }
 
+        .modal-header.email {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
         .modal-header-content {
             display: flex;
             justify-content: space-between;
@@ -481,48 +448,6 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 1.2rem;
-        }
-
-        .progress-steps {
-            display: flex;
-            align-items: center;
-            margin-top: 24px;
-            gap: 16px;
-        }
-
-        .step-circle {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .step-circle.active {
-            background: white;
-            color: #667eea;
-        }
-
-        .step-circle.inactive {
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-        }
-
-        .step-line {
-            width: 48px;
-            height: 4px;
-            border-radius: 2px;
-        }
-
-        .step-line.active {
-            background: white;
-        }
-
-        .step-line.inactive {
-            background: rgba(255, 255, 255, 0.3);
         }
 
         .modal-body {
@@ -554,57 +479,6 @@
             border-color: #667eea;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .option-card {
-            padding: 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            background: white;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .option-card.selected {
-            border-color: #667eea;
-            background: #f0f4ff;
-        }
-
-        .option-card h4 {
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .option-card.selected h4 {
-            color: #667eea;
-        }
-
-        .option-card p {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        .loading-screen {
-            text-align: center;
-            padding: 48px 0;
-        }
-
-        .loading-icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         .success-box {
             background: #f0fdf4;
             border: 1px solid #bbf7d0;
@@ -627,26 +501,26 @@
             font-size: 0.875rem;
         }
 
-        .review-container {
+        .content-container {
             background: #f9fafb;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 24px;
         }
 
-        .review-header {
+        .content-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
         }
 
-        .review-actions {
+        .content-actions {
             display: flex;
             gap: 8px;
         }
 
-        .review-content {
+        .content-display {
             background: white;
             border-radius: 6px;
             padding: 16px;
@@ -693,10 +567,6 @@
                 display: none;
             }
 
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-
             .modal-footer {
                 flex-direction: column;
             }
@@ -715,7 +585,7 @@
                 <nav>
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="#how-it-works">How It Works</a>
+                    <a href="#contact">Contact</a>
                     <a href="#" class="btn btn-primary">Get Started</a>
                 </nav>
             </div>
@@ -731,7 +601,8 @@
                 <strong style="color: #667eea;">Boost your affiliate commissions today!</strong>
             </p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="openModal()">Try Free Demo →</button>
+                <button class="btn btn-primary" onclick="openReviewModal()">Try Free Demo →</button>
+                <button class="btn btn-email" onclick="openEmailModal()">📧 Email Sequences</button>
                 <a href="#pricing" class="btn btn-secondary">View Pricing</a>
             </div>
             <div class="hero-features">
@@ -776,39 +647,9 @@
                     <p>Generate comprehensive product reviews in seconds, not hours of manual writing.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Multiple Formats</h3>
-                    <p>Choose from various review formats: detailed, quick, comparison, pros/cons, and more.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It <span style="color: #764ba2;">Works</span></h2>
-                <p>Generate professional product reviews in just 3 simple steps</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-icon">🎯</div>
-                    <div class="step-number">STEP 01</div>
-                    <h3>Paste Product URL</h3>
-                    <p>Simply paste the sales page URL of any product you want to review</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">⚡</div>
-                    <div class="step-number">STEP 02</div>
-                    <h3>AI Analysis</h3>
-                    <p>Our AI analyzes the page content, features, benefits, and pricing</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon">⭐</div>
-                    <div class="step-number">STEP 03</div>
-                    <h3>Get Your Review</h3>
-                    <p>Receive a comprehensive, SEO-optimized review ready to publish</p>
+                    <div class="feature-icon">📧</div>
+                    <h3>Email Sequences</h3>
+                    <p>Create complete email marketing campaigns with follow-up sequences to maximize conversions.</p>
                 </div>
             </div>
         </div>
@@ -835,6 +676,7 @@
                         <li><span class="check">✓</span> 3 review formats</li>
                         <li><span class="check">✓</span> Email support</li>
                         <li><span class="check">✓</span> SEO optimization</li>
+                        <li><span class="check">✓</span> 5 email sequences</li>
                     </ul>
                     <button class="btn btn-secondary" style="width: 100%;">Get Started</button>
                 </div>
@@ -853,6 +695,7 @@
                         <li><span class="check">✓</span> Advanced SEO tools</li>
                         <li><span class="check">✓</span> Bulk processing</li>
                         <li><span class="check">✓</span> Custom templates</li>
+                        <li><span class="check">✓</span> Unlimited email sequences</li>
                     </ul>
                     <button class="btn btn-primary" style="width: 100%;">Get Started</button>
                 </div>
@@ -872,6 +715,7 @@
                         <li><span class="check">✓</span> Team collaboration</li>
                         <li><span class="check">✓</span> Custom integrations</li>
                         <li><span class="check">✓</span> Analytics dashboard</li>
+                        <li><span class="check">✓</span> Advanced email automation</li>
                     </ul>
                     <button class="btn btn-secondary" style="width: 100%;">Get Started</button>
                 </div>
@@ -884,7 +728,7 @@
         <div class="container">
             <h2>Ready to 10X Your Affiliate Revenue?</h2>
             <p>Join thousands of successful affiliate marketers who are already using Product Review Profits Pro to generate high-converting reviews.</p>
-            <button class="btn" onclick="openModal()">Start Your Free Trial →</button>
+            <button class="btn" onclick="openReviewModal()">Start Your Free Trial →</button>
         </div>
     </section>
 
@@ -913,212 +757,69 @@
                         <h2>AI Review Generator</h2>
                         <p>Transform any product page into a compelling review</p>
                     </div>
-                    <button class="close-btn" onclick="closeModal()">✕</button>
-                </div>
-                <div class="progress-steps">
-                    <div class="step-circle active" id="step1">1</div>
-                    <div class="step-line inactive" id="line1"></div>
-                    <div class="step-circle inactive" id="step2">2</div>
-                    <div class="step-line inactive" id="line2"></div>
-                    <div class="step-circle inactive" id="step3">3</div>
-                    <div class="step-line inactive" id="line3"></div>
-                    <div class="step-circle inactive" id="step4">4</div>
+                    <button class="close-btn" onclick="closeReviewModal()">✕</button>
                 </div>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Step 1: Input Form -->
-                <div id="step1Content">
-                    <div class="form-group">
-                        <label>Product Sales Page URL</label>
-                        <input type="url" id="productUrl" placeholder="https://example.com/product-page">
-                    </div>
-                    <div class="form-group">
-                        <label>Review Type</label>
-                        <div class="options-grid">
-                            <div class="option-card selected" data-type="detailed">
-                                <h4>Detailed Review</h4>
-                                <p>Comprehensive analysis with pros/cons</p>
-                            </div>
-                            <div class="option-card" data-type="quick">
-                                <h4>Quick Review</h4>
-                                <p>Concise overview for busy readers</p>
-                            </div>
-                            <div class="option-card" data-type="comparison">
-                                <h4>Comparison Review</h4>
-                                <p>Compare with similar products</p>
-                            </div>
-                            <div class="option-card" data-type="buyer-guide">
-                                <h4>Buyer's Guide</h4>
-                                <p>Help readers make decisions</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Writing Tone</label>
-                        <div class="options-grid">
-                            <div class="option-card selected" data-tone="professional">
-                                <h4>Professional</h4>
-                                <p>Authoritative and trustworthy</p>
-                            </div>
-                            <div class="option-card" data-tone="casual">
-                                <h4>Casual</h4>
-                                <p>Friendly and conversational</p>
-                            </div>
-                            <div class="option-card" data-tone="enthusiastic">
-                                <h4>Enthusiastic</h4>
-                                <p>Excited and energetic</p>
-                            </div>
-                            <div class="option-card" data-tone="critical">
-                                <h4>Critical</h4>
-                                <p>Balanced with honest critique</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; padding: 16px;" onclick="startGeneration()">
-                        ⚡ Analyze Product Page
-                    </button>
+            <div class="modal-body" id="reviewModalBody">
+                <div class="form-group">
+                    <label>Product Sales Page URL</label>
+                    <input type="url" id="productUrl" placeholder="https://example.com/product-page">
                 </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 16px;" onclick="generateReview()">
+                    ⚡ Generate Review
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Sequence Generator Modal -->
+    <div class="modal" id="emailModal">
+        <div class="modal-content">
+            <div class="modal-header email">
+                <div class="modal-header-content">
+                    <div class="modal-title">
+                        <h2>📧 Email Sequence Generator</h2>
+                        <p>Create high-converting email campaigns for your products</p>
+                    </div>
+                    <button class="close-btn" onclick="closeEmailModal()">✕</button>
+                </div>
+            </div>
+            <div class="modal-body" id="emailModalBody">
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="emailProductName" placeholder="Premium Wireless Headphones">
+                </div>
+                <button class="btn btn-email" style="width: 100%; padding: 16px;" onclick="generateEmails()">
+                    📧 Generate Email Sequence
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        let currentStep = 1;
-        let selectedType = 'detailed';
-        let selectedTone = 'professional';
-
-        function openModal() {
+        function openReviewModal() {
             document.getElementById('reviewModal').classList.add('active');
         }
 
-        function closeModal() {
+        function closeReviewModal() {
             document.getElementById('reviewModal').classList.remove('active');
-            resetModal();
         }
 
-        function resetModal() {
-            currentStep = 1;
-            updateProgressSteps();
-            document.getElementById('modalBody').innerHTML = document.getElementById('step1Content').outerHTML;
-            setupEventListeners();
+        function openEmailModal() {
+            document.getElementById('emailModal').classList.add('active');
         }
 
-        function updateProgressSteps() {
-            for (let i = 1; i <= 4; i++) {
-                const step = document.getElementById(`step${i}`);
-                const line = document.getElementById(`line${i}`);
-                
-                if (i <= currentStep) {
-                    step.classList.remove('inactive');
-                    step.classList.add('active');
-                    if (i > currentStep) {
-                        step.innerHTML = '✓';
-                    }
-                } else {
-                    step.classList.remove('active');
-                    step.classList.add('inactive');
-                    step.innerHTML = i;
-                }
-                
-                if (line && i < currentStep) {
-                    line.classList.remove('inactive');
-                    line.classList.add('active');
-                } else if (line) {
-                    line.classList.remove('active');
-                    line.classList.add('inactive');
-                }
-            }
+        function closeEmailModal() {
+            document.getElementById('emailModal').classList.remove('active');
         }
 
-        function setupEventListeners() {
-            // Review type selection
-            document.querySelectorAll('[data-type]').forEach(card => {
-                card.addEventListener('click', function() {
-                    document.querySelectorAll('[data-type]').forEach(c => c.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedType = this.dataset.type;
-                });
-            });
-
-            // Tone selection
-            document.querySelectorAll('[data-tone]').forEach(card => {
-                card.addEventListener('click', function() {
-                    document.querySelectorAll('[data-tone]').forEach(c => c.classList.remove('selected'));
-                    this.classList.add('selected');
-                    selectedTone = this.dataset.tone;
-                });
-            });
-        }
-
-        function startGeneration() {
+        function generateReview() {
             const url = document.getElementById('productUrl').value;
             if (!url) {
                 alert('Please enter a product URL');
                 return;
             }
 
-            // Step 2: Analysis
-            currentStep = 2;
-            updateProgressSteps();
-            document.getElementById('modalBody').innerHTML = `
-                <div class="loading-screen">
-                    <div class="loading-icon">🔄</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; color: #374151;">
-                        Analyzing Product Page
-                    </h3>
-                    <p style="color: #6b7280;">Our AI is extracting key information from the sales page...</p>
-                    <div style="margin-top: 24px; text-align: left; max-width: 300px; margin-left: auto; margin-right: auto;">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #10b981;">
-                            <span>✓</span> <span style="font-size: 0.875rem;">Page content extracted</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #667eea;">
-                            <span>🔄</span> <span style="font-size: 0.875rem;">Identifying key features...</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 8px; opacity: 0.5;">
-                            <span>⏱️</span> <span style="font-size: 0.875rem;">Analyzing pricing and benefits</span>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            setTimeout(() => {
-                // Step 3: Generation
-                currentStep = 3;
-                updateProgressSteps();
-                document.getElementById('modalBody').innerHTML = `
-                    <div class="loading-screen">
-                        <div class="loading-icon">🔄</div>
-                        <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; color: #374151;">
-                            Generating Your Review
-                        </h3>
-                        <p style="color: #6b7280;">Creating a compelling, SEO-optimized review...</p>
-                        <div style="margin-top: 24px; text-align: left; max-width: 300px; margin-left: auto; margin-right: auto;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #10b981;">
-                                <span>✓</span> <span style="font-size: 0.875rem;">Structuring content</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #10b981;">
-                                <span>✓</span> <span style="font-size: 0.875rem;">Writing introduction</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #667eea;">
-                                <span>🔄</span> <span style="font-size: 0.875rem;">Analyzing pros and cons...</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; opacity: 0.5;">
-                                <span>⏱️</span> <span style="font-size: 0.875rem;">Finalizing review</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                setTimeout(() => {
-                    // Step 4: Complete
-                    currentStep = 4;
-                    updateProgressSteps();
-                    showFinalReview();
-                }, 3000);
-            }, 2000);
-        }
-
-        function showFinalReview() {
             const review = `# Premium Wireless Noise-Canceling Headphones Review
 
 ## Overview
@@ -1160,7 +861,7 @@ The Premium Wireless Noise-Canceling Headphones justify their premium price with
 
 *This review is based on extensive testing and objective analysis.*`;
 
-            document.getElementById('modalBody').innerHTML = `
+            document.getElementById('reviewModalBody').innerHTML = `
                 <div class="success-box">
                     <div class="success-content">
                         <span>✓</span>
@@ -1171,48 +872,197 @@ The Premium Wireless Noise-Canceling Headphones justify their premium price with
                     </p>
                 </div>
 
-                <div class="review-container">
-                    <div class="review-header">
+                <div class="content-container">
+                    <div class="content-header">
                         <h3 style="font-weight: 500; color: #374151;">Generated Review</h3>
-                        <div class="review-actions">
-                            <button onclick="copyReview()" style="background: #667eea; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
+                        <div class="content-actions">
+                            <button onclick="copyContent('reviewContent')" style="background: #667eea; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
                                 📋 Copy
-                            </button>
-                            <button style="background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
-                                💾 Download
                             </button>
                         </div>
                     </div>
-                    <div class="review-content" id="reviewContent">${review}</div>
+                    <div class="content-display" id="reviewContent">${review}</div>
                 </div>
 
                 <div class="modal-footer">
-                    <button onclick="resetModal()" style="flex: 1; border: 2px solid #d1d5db; background: white; color: #374151; padding: 12px; border-radius: 8px; font-weight: 500; cursor: pointer;">
+                    <button onclick="resetReviewModal()" style="flex: 1; border: 2px solid #d1d5db; background: white; color: #374151; padding: 12px; border-radius: 8px; font-weight: 500; cursor: pointer;">
                         Generate Another
                     </button>
-                    <button onclick="closeModal()" class="btn btn-primary" style="flex: 1; padding: 12px;">
+                    <button onclick="closeReviewModal()" class="btn btn-primary" style="flex: 1; padding: 12px;">
                         Done
                     </button>
                 </div>
             `;
         }
 
-        function copyReview() {
-            const reviewText = document.getElementById('reviewContent').textContent;
-            navigator.clipboard.writeText(reviewText).then(() => {
-                alert('Review copied to clipboard!');
+        function generateEmails() {
+            const productName = document.getElementById('emailProductName').value;
+            if (!productName) {
+                alert('Please enter a product name');
+                return;
+            }
+
+            const emailSequence = `EMAIL 1 - Subject: 🎧 Discover the Sound Revolution You've Been Waiting For
+
+Hi [First Name],
+
+Have you ever put on a pair of headphones and felt like you were transported into the recording studio with your favorite artist?
+
+That's exactly what happened to me when I first tried the ${productName}.
+
+I'm [Your Name], and I've been testing audio equipment for over 5 years. I've tried everything from $50 budget headphones to $500+ audiophile gear, and I can honestly say these headphones have completely changed my perspective on what wireless audio can be.
+
+Here's what caught my attention immediately:
+
+✓ Crystal-clear sound that rivals wired studio headphones
+✓ Noise cancellation so good, I forgot I was on a busy street
+✓ 30-hour battery life (yes, you read that right!)
+✓ Comfort that lets me wear them all day without fatigue
+
+Over the next few days, I'm going to share my complete, unbiased review of these headphones.
+
+Best regards,
+[Your Name]
+
+---
+
+EMAIL 2 - Subject: The $299 Question: Are These Headphones Worth It?
+
+Hi [First Name],
+
+Yesterday, my friend Sarah asked me a direct question: "Are $299 headphones really worth it when I can get wireless headphones for $50?"
+
+It's a fair question, and one I asked myself before testing these ${productName}.
+
+Here's my honest breakdown:
+
+**What You Get for $299:**
+• Hi-Res Audio certification (studio-quality sound)
+• Advanced noise cancellation technology
+• 30-hour battery life with quick charge
+• Premium materials (leather ear cups, aluminum frame)
+• 2-year warranty with excellent customer support
+
+**What You Get for $50:**
+• Basic wireless connectivity
+• 6-8 hour battery life
+• Plastic construction
+• No noise cancellation
+• Limited warranty
+
+The math is simple: If you use headphones for 2+ hours daily, the premium option costs about $0.41 per day over 2 years. That's less than a cup of coffee.
+
+Tomorrow, I'll share the one feature that completely surprised me.
+
+Best,
+[Your Name]
+
+---
+
+EMAIL 3 - Subject: 🎁 Last Chance: My Exclusive Reader Bonus
+
+Hi [First Name],
+
+This is my final email about the ${productName}, and I have something special for you.
+
+Over the past week, I've shared my complete, honest review of these headphones. From the incredible sound quality to the life-changing noise cancellation, you've heard it all.
+
+But I know that even with all the benefits, $299 is a significant investment.
+
+That's why I reached out to the company and secured an exclusive deal for my readers:
+
+🎁 **EXCLUSIVE READER BONUS:**
+- $50 off your purchase (normally $299, now $249)
+- Free premium carrying case ($39 value)
+- Extended 3-year warranty (normally 2 years)
+- Free shipping and returns
+
+**Total Value: $128 in savings and bonuses**
+
+This deal expires at midnight tonight and is only available through my special link.
+
+Ready to upgrade your audio experience?
+
+[CLAIM YOUR EXCLUSIVE DEAL HERE - Expires Tonight]
+
+Best regards,
+[Your Name]`;
+
+            document.getElementById('emailModalBody').innerHTML = `
+                <div class="success-box">
+                    <div class="success-content">
+                        <span>✓</span>
+                        <span>Email Sequence Generated Successfully!</span>
+                    </div>
+                    <p class="success-text">
+                        Your 3-email campaign is ready. Copy the content and use it in your email marketing platform.
+                    </p>
+                </div>
+
+                <div class="content-container">
+                    <div class="content-header">
+                        <h3 style="font-weight: 500; color: #374151;">Generated Email Sequence (3 Emails)</h3>
+                        <div class="content-actions">
+                            <button onclick="copyContent('emailContent')" style="background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.875rem; cursor: pointer;">
+                                📧 Copy All
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-display" id="emailContent">${emailSequence}</div>
+                </div>
+
+                <div class="modal-footer">
+                    <button onclick="resetEmailModal()" style="flex: 1; border: 2px solid #d1d5db; background: white; color: #374151; padding: 12px; border-radius: 8px; font-weight: 500; cursor: pointer;">
+                        Generate Another
+                    </button>
+                    <button onclick="closeEmailModal()" class="btn btn-email" style="flex: 1; padding: 12px;">
+                        Done
+                    </button>
+                </div>
+            `;
+        }
+
+        function copyContent(elementId) {
+            const content = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Content copied to clipboard!');
             });
         }
 
-        // Initialize event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            setupEventListeners();
-        });
+        function resetReviewModal() {
+            document.getElementById('reviewModalBody').innerHTML = `
+                <div class="form-group">
+                    <label>Product Sales Page URL</label>
+                    <input type="url" id="productUrl" placeholder="https://example.com/product-page">
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 16px;" onclick="generateReview()">
+                    ⚡ Generate Review
+                </button>
+            `;
+        }
 
-        // Close modal when clicking outside
+        function resetEmailModal() {
+            document.getElementById('emailModalBody').innerHTML = `
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="emailProductName" placeholder="Premium Wireless Headphones">
+                </div>
+                <button class="btn btn-email" style="width: 100%; padding: 16px;" onclick="generateEmails()">
+                    📧 Generate Email Sequence
+                </button>
+            `;
+        }
+
+        // Close modals when clicking outside
         document.getElementById('reviewModal').addEventListener('click', function(e) {
             if (e.target === this) {
-                closeModal();
+                closeReviewModal();
+            }
+        });
+
+        document.getElementById('emailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeEmailModal();
             }
         });
     </script>
