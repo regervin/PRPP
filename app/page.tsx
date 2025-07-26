@@ -257,7 +257,7 @@ Best regards,
               </p>
             </motion.div>
 
-            {/* BUTTONS ROW 1 */}
+            {/* Hero Buttons - Matching Live Site */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -278,9 +278,12 @@ Best regards,
                 <Mail className="w-5 h-5" />
                 📧 Email Sequences
               </button>
+              <a href="#pricing" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+                View Pricing
+              </a>
             </motion.div>
 
-            {/* BUTTONS ROW 2 */}
+            {/* Second Row of Buttons - Matching Live Site */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -292,7 +295,7 @@ Best regards,
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Gift className="w-5 h-5" />
-                🎁 $1,382 Bonus Pack
+                🎁 $2,847 Bonus Pack
               </button>
               <button 
                 onClick={scrollToPromptLibrary}
@@ -300,10 +303,6 @@ Best regards,
               >
                 <BookOpen className="w-5 h-5" />
                 📚 AI Prompt Library
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-                <Play className="w-5 h-5" />
-                Watch Demo Video
               </button>
             </motion.div>
 
