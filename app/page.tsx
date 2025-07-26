@@ -17,12 +17,10 @@ import {
   Star,
   CheckCircle,
   ArrowRight,
-  Play,
   Gift,
   Mail,
   BookOpen
 } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 export default function Home() {
   const [showGenerator, setShowGenerator] = useState(false)
@@ -119,7 +117,7 @@ export default function Home() {
   ]
 
   const generateEmailSequence = () => {
-    const emailSequence = `EMAIL 1 - Subject: 🎧 Discover the Sound Revolution You've Been Waiting For
+    return `EMAIL 1 - Subject: 🎧 Discover the Sound Revolution You've Been Waiting For
 
 Hi [First Name],
 
@@ -204,8 +202,6 @@ Ready to upgrade your audio experience?
 
 Best regards,
 [Your Name]`
-
-    return emailSequence
   }
 
   const copyToClipboard = (content: string) => {
@@ -231,16 +227,34 @@ Best regards,
     <div className="min-h-screen bg-white">
       <Header />
       
+      {/* SIMPLE TEST - NO MOTION, NO COMPLEX STYLING */}
+      <div style={{ backgroundColor: 'red', padding: '20px', margin: '20px', border: '5px solid black' }}>
+        <h1 style={{ color: 'white', fontSize: '24px' }}>EMERGENCY TEST SECTION</h1>
+        <p style={{ color: 'white' }}>If you can see this, the component is rendering!</p>
+        
+        <button 
+          onClick={() => {
+            console.log('TEST BUTTON CLICKED!')
+            alert('Button works!')
+          }}
+          style={{ 
+            backgroundColor: 'blue', 
+            color: 'white', 
+            padding: '10px 20px', 
+            margin: '10px',
+            border: 'none',
+            cursor: 'pointer'
+          }}
+        >
+          TEST BUTTON
+        </button>
+      </div>
+
       {/* Hero Section */}
       <section className="pt-24 pb-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
+            <div className="mb-8">
               <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Star className="w-4 h-4" />
                 <span>Trusted by 10,000+ Affiliate Marketers</span>
@@ -255,63 +269,48 @@ Best regards,
                 Transform any product sales page into compelling, high-converting reviews with our AI-powered review generator. 
                 <strong className="text-blue-600"> Boost your affiliate commissions by 300%!</strong>
               </p>
-            </motion.div>
+            </div>
 
-            {/* Hero Buttons - Matching Live Site */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-4"
-            >
-              <button 
-                onClick={() => setShowGenerator(true)}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <Zap className="w-5 h-5" />
-                Try Free Demo →
-              </button>
-              <button 
-                onClick={() => setShowEmailGenerator(true)}
-                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                📧 Email Sequences
-              </button>
-              <a href="#pricing" className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-                View Pricing
-              </a>
-            </motion.div>
+            {/* HERO BUTTONS - SIMPLE APPROACH */}
+            <div className="mb-12">
+              <div className="flex flex-wrap justify-center gap-4 mb-4">
+                <button 
+                  onClick={() => setShowGenerator(true)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors flex items-center gap-2"
+                >
+                  <Zap className="w-5 h-5" />
+                  Try Free Demo →
+                </button>
+                
+                <button 
+                  onClick={() => setShowEmailGenerator(true)}
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors flex items-center gap-2"
+                >
+                  <Mail className="w-5 h-5" />
+                  📧 Email Sequences
+                </button>
+              </div>
+              
+              <div className="flex flex-wrap justify-center gap-4">
+                <button 
+                  onClick={scrollToBonusProducts}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors flex items-center gap-2"
+                >
+                  <Gift className="w-5 h-5" />
+                  🎁 $2,847 Bonus Pack
+                </button>
+                
+                <button 
+                  onClick={scrollToPromptLibrary}
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors flex items-center gap-2"
+                >
+                  <BookOpen className="w-5 h-5" />
+                  📚 AI Prompt Library
+                </button>
+              </div>
+            </div>
 
-            {/* Second Row of Buttons - Matching Live Site */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
-            >
-              <button 
-                onClick={scrollToBonusProducts}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <Gift className="w-5 h-5" />
-                🎁 $2,847 Bonus Pack
-              </button>
-              <button 
-                onClick={scrollToPromptLibrary}
-                className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <BookOpen className="w-5 h-5" />
-                📚 AI Prompt Library
-              </button>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-8 text-sm text-gray-600"
-            >
+            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-500" />
                 <span>No credit card required</span>
@@ -324,7 +323,7 @@ Best regards,
                 <CheckCircle className="w-5 h-5 text-green-500" />
                 <span>Cancel anytime</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -332,12 +331,7 @@ Best regards,
       {/* Features Section */}
       <section id="features" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Why Choose <span className="text-blue-600">Review Profits Pro?</span>
             </h2>
@@ -345,7 +339,7 @@ Best regards,
               Our advanced AI technology analyzes product sales pages and creates authentic, 
               high-converting reviews that drive real results.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
@@ -363,19 +357,14 @@ Best regards,
       {/* How It Works */}
       <section id="how-it-works" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               How It <span className="text-purple-600">Works</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Generate professional product reviews in just 3 simple steps
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-12">
             {[
@@ -398,20 +387,14 @@ Best regards,
                 icon: <Star className="w-8 h-8" />
               }
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center"
-              >
+              <div key={index} className="text-center">
                 <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   {item.icon}
                 </div>
                 <div className="text-blue-600 font-bold text-sm mb-2">STEP {item.step}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
                 <p className="text-gray-600 text-lg">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -430,19 +413,14 @@ Best regards,
       {/* Pricing Section */}
       <section id="pricing" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Choose Your <span className="text-blue-600">Plan</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Start free, scale as you grow. All plans include our core AI review generation features.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {pricingPlans.map((plan, index) => (
@@ -463,11 +441,7 @@ Best regards,
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div>
             <h2 className="text-4xl font-bold mb-6">
               Ready to 10X Your Affiliate Revenue?
             </h2>
@@ -482,7 +456,7 @@ Best regards,
               Start Your Free Trial
               <ArrowRight className="w-5 h-5" />
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -522,13 +496,7 @@ Best regards,
       {/* Email Generator Modal */}
       {showEmailGenerator && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
-          >
-            {/* Header */}
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
             <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
@@ -549,7 +517,6 @@ Best regards,
               </div>
             </div>
 
-            {/* Content */}
             <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
               <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
                 <div className="flex items-center gap-2 text-green-700 mb-2">
