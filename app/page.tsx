@@ -1,46 +1,63 @@
 'use client'
 
 import { useState } from 'react'
+import Header from './components/Header'
+import FeatureCard from './components/FeatureCard'
+import PricingCard from './components/PricingCard'
+import ReviewGenerator from './components/ReviewGenerator'
+import BonusProducts from './components/BonusProducts'
+import PromptLibrary from './components/PromptLibrary'
+import { 
+  Zap, 
+  Target, 
+  TrendingUp, 
+  Shield, 
+  Clock, 
+  Sparkles,
+  Star,
+  CheckCircle,
+  ArrowRight,
+  Play,
+  Gift,
+  Mail,
+  BookOpen
+} from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   const [showGenerator, setShowGenerator] = useState(false)
-  const [url, setUrl] = useState('')
-  const [reviewType, setReviewType] = useState('detailed')
-  const [tone, setTone] = useState('professional')
-  const [isGenerating, setIsGenerating] = useState(false)
-  const [generatedReview, setGeneratedReview] = useState('')
-  const [step, setStep] = useState(1)
+  const [showEmailGenerator, setShowEmailGenerator] = useState(false)
 
   const features = [
     {
+      icon: <Zap className="w-6 h-6" />,
       title: "AI-Powered Analysis",
-      description: "Advanced AI analyzes product sales pages to extract key features, benefits, and selling points automatically.",
-      icon: "⚡"
+      description: "Advanced AI analyzes product sales pages to extract key features, benefits, and selling points automatically."
     },
     {
+      icon: <Target className="w-6 h-6" />,
       title: "Targeted Reviews",
-      description: "Generate reviews tailored to specific audiences and niches for maximum conversion potential.",
-      icon: "🎯"
+      description: "Generate reviews tailored to specific audiences and niches for maximum conversion potential."
     },
     {
+      icon: <TrendingUp className="w-6 h-6" />,
       title: "SEO Optimized",
-      description: "Reviews are optimized for search engines with relevant keywords and proper structure.",
-      icon: "📈"
+      description: "Reviews are optimized for search engines with relevant keywords and proper structure."
     },
     {
+      icon: <Shield className="w-6 h-6" />,
       title: "Authentic Tone",
-      description: "Creates genuine, trustworthy reviews that don't sound robotic or overly promotional.",
-      icon: "🛡️"
+      description: "Creates genuine, trustworthy reviews that don't sound robotic or overly promotional."
     },
     {
+      icon: <Clock className="w-6 h-6" />,
       title: "Instant Generation",
-      description: "Generate comprehensive product reviews in seconds, not hours of manual writing.",
-      icon: "⏱️"
+      description: "Generate comprehensive product reviews in seconds, not hours of manual writing."
     },
     {
+      icon: <Sparkles className="w-6 h-6" />,
       title: "Multiple Formats",
-      description: "Choose from various review formats: detailed, quick, comparison, pros/cons, and more.",
-      icon: "✨"
+      description: "Choose from various review formats: detailed, quick, comparison, pros/cons, and more."
     }
   ]
 
@@ -55,7 +72,8 @@ export default function Home() {
         "Basic AI analysis",
         "3 review formats",
         "Email support",
-        "SEO optimization"
+        "SEO optimization",
+        "Basic prompt library"
       ],
       popular: false
     },
@@ -71,7 +89,10 @@ export default function Home() {
         "Priority support",
         "Advanced SEO tools",
         "Bulk processing",
-        "Custom templates"
+        "Custom templates",
+        "Full prompt library",
+        "Email sequences",
+        "Social media templates"
       ],
       popular: true
     },
@@ -88,586 +109,485 @@ export default function Home() {
         "API access",
         "Team collaboration",
         "Custom integrations",
-        "Analytics dashboard"
+        "Analytics dashboard",
+        "All bonus products",
+        "Custom prompt creation",
+        "Priority feature requests"
       ],
       popular: false
     }
   ]
 
-  const handleGenerate = async () => {
-    if (!url) return
-    
-    setIsGenerating(true)
-    setStep(2)
-    
-    // Simulate analysis
-    setTimeout(() => {
-      setStep(3)
-      setTimeout(() => {
-        setGeneratedReview(`# Premium Wireless Noise-Canceling Headphones Review
+  const generateEmailSequence = () => {
+    const emailSequence = `EMAIL 1 - Subject: 🎧 Discover the Sound Revolution You've Been Waiting For
 
-## Overview
-After extensively testing the Premium Wireless Noise-Canceling Headphones for over two weeks, I can confidently say these headphones deliver on their promise of premium audio quality and comfort. Priced at $299.99, they position themselves in the high-end market segment.
+Hi [First Name],
 
-## Key Features That Stand Out
+Have you ever put on a pair of headphones and felt like you were transported into the recording studio with your favorite artist?
 
-### 🎵 **Exceptional Sound Quality**
-The Hi-Res Audio certification isn't just marketing fluff. These headphones reproduce audio with remarkable clarity across all frequencies. The bass is punchy without being overwhelming, mids are crystal clear, and highs are crisp without any harshness.
+That's exactly what happened to me when I first tried the Premium Wireless Headphones.
 
-### 🔇 **Active Noise Cancellation**
-The ANC technology is truly impressive. Whether you're on a busy street, in a coffee shop, or on an airplane, these headphones create a peaceful bubble around you.
+I'm [Your Name], and I've been testing audio equipment for over 5 years. I've tried everything from $50 budget headphones to $500+ audiophile gear, and I can honestly say these headphones have completely changed my perspective on what wireless audio can be.
 
-### 🔋 **Outstanding Battery Life**
-The claimed 30-hour battery life is accurate in real-world usage. Even with ANC enabled, I consistently got 28-30 hours of playback.
+Here's what caught my attention immediately:
 
-## Pros and Cons
+✓ Crystal-clear sound that rivals wired studio headphones
+✓ Noise cancellation so good, I forgot I was on a busy street
+✓ 30-hour battery life (yes, you read that right!)
+✓ Comfort that lets me wear them all day without fatigue
 
-### ✅ **What I Loved**
-- **Comfort**: The premium leather ear cups are incredibly comfortable
-- **Build Quality**: Solid construction that feels like it will last for years
-- **Sound Isolation**: Perfect for focus work or travel
-- **Intuitive Controls**: Easy-to-use touch controls that actually work
+Over the next few days, I'm going to share my complete, unbiased review of these headphones.
 
-### ❌ **Areas for Improvement**
-- **Price**: At $299.99, they're definitely an investment
-- **Size**: Bulkier than some competitors, less portable
-- **Color Options**: Limited to black and silver only
+Best regards,
+[Your Name]
 
-## Final Verdict
+---
 
-**Rating: ⭐⭐⭐⭐⭐ (4.5/5)**
+EMAIL 2 - Subject: The $299 Question: Are These Headphones Worth It?
 
-The Premium Wireless Noise-Canceling Headphones justify their premium price with exceptional performance across all key areas. While they're not the cheapest option, the combination of sound quality, comfort, and battery life makes them a worthwhile investment.
+Hi [First Name],
 
-**Bottom Line**: If you're looking for headphones that excel in every category and don't mind paying for quality, these are an excellent choice.`)
-        setStep(4)
-        setIsGenerating(false)
-      }, 3000)
-    }, 2000)
+Yesterday, my friend Sarah asked me a direct question: "Are $299 headphones really worth it when I can get wireless headphones for $50?"
+
+It's a fair question, and one I asked myself before testing these Premium Wireless Headphones.
+
+Here's my honest breakdown:
+
+**What You Get for $299:**
+• Hi-Res Audio certification (studio-quality sound)
+• Advanced noise cancellation technology
+• 30-hour battery life with quick charge
+• Premium materials (leather ear cups, aluminum frame)
+• 2-year warranty with excellent customer support
+
+**What You Get for $50:**
+• Basic wireless connectivity
+• 6-8 hour battery life
+• Plastic construction
+• No noise cancellation
+• Limited warranty
+
+The math is simple: If you use headphones for 2+ hours daily, the premium option costs about $0.41 per day over 2 years. That's less than a cup of coffee.
+
+Tomorrow, I'll share the one feature that completely surprised me.
+
+Best,
+[Your Name]
+
+---
+
+EMAIL 3 - Subject: 🎁 Last Chance: My Exclusive Reader Bonus
+
+Hi [First Name],
+
+This is my final email about the Premium Wireless Headphones, and I have something special for you.
+
+Over the past week, I've shared my complete, honest review of these headphones. From the incredible sound quality to the life-changing noise cancellation, you've heard it all.
+
+But I know that even with all the benefits, $299 is a significant investment.
+
+That's why I reached out to the company and secured an exclusive deal for my readers:
+
+🎁 **EXCLUSIVE READER BONUS:**
+- $50 off your purchase (normally $299, now $249)
+- Free premium carrying case ($39 value)
+- Extended 3-year warranty (normally 2 years)
+- Free shipping and returns
+
+**Total Value: $128 in savings and bonuses**
+
+This deal expires at midnight tonight and is only available through my special link.
+
+Ready to upgrade your audio experience?
+
+[CLAIM YOUR EXCLUSIVE DEAL HERE - Expires Tonight]
+
+Best regards,
+[Your Name]`
+
+    return emailSequence
   }
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedReview)
-    alert('Review copied to clipboard!')
+  const copyToClipboard = (content: string) => {
+    navigator.clipboard.writeText(content)
+    alert('Content copied to clipboard!')
+  }
+
+  const scrollToBonusProducts = () => {
+    const bonusSection = document.querySelector('#bonus-products')
+    if (bonusSection) {
+      bonusSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const scrollToPromptLibrary = () => {
+    const promptSection = document.querySelector('#prompt-library')
+    if (promptSection) {
+      promptSection.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
-    <div style={{ minHeight: '100vh' }}>
-      {/* Header */}
-      <header style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        background: 'rgba(255, 255, 255, 0.95)', 
-        backdropFilter: 'blur(10px)',
-        zIndex: 100,
-        padding: '16px 20px',
-        borderBottom: '1px solid #e2e8f0'
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-              padding: '8px', 
-              borderRadius: '8px',
-              color: 'white',
-              fontWeight: 'bold'
-            }}>
-              ⭐
-            </div>
-            <span style={{ fontSize: '1.25rem', fontWeight: '700', color: '#1a202c' }}>
-              Review Profits Pro
-            </span>
-          </div>
-          <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-            <a href="#features" style={{ color: '#4a5568', textDecoration: 'none', fontWeight: '500' }}>Features</a>
-            <a href="#pricing" style={{ color: '#4a5568', textDecoration: 'none', fontWeight: '500' }}>Pricing</a>
-            <button className="btn btn-primary">Get Started</button>
-          </nav>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-white">
+      <Header />
+      
       {/* Hero Section */}
-      <section className="hero">
-        <h1>Product Review<br />Profits Pro</h1>
-        <p>
-          Transform any product sales page into compelling, high-converting reviews with our AI-powered review generator. 
-          <strong style={{ color: '#667eea' }}> Boost your affiliate commissions today!</strong>
-        </p>
-        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button 
-            className="btn btn-primary"
-            onClick={() => setShowGenerator(true)}
-            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-          >
-            Try Free Demo →
-          </button>
-          <button className="btn btn-secondary">View Pricing</button>
-        </div>
-        <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '24px', flexWrap: 'wrap', fontSize: '0.875rem', color: '#666' }}>
-          <span>✅ No credit card required</span>
-          <span>✅ Generate 3 reviews free</span>
-          <span>✅ Cancel anytime</span>
+      <section className="pt-24 pb-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Star className="w-4 h-4" />
+                <span>Trusted by 10,000+ Affiliate Marketers</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Product Review<br />
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Profits Pro
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                Transform any product sales page into compelling, high-converting reviews with our AI-powered review generator. 
+                <strong className="text-blue-600"> Boost your affiliate commissions by 300%!</strong>
+              </p>
+            </motion.div>
+
+            {/* BUTTONS ROW 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-4"
+            >
+              <button 
+                onClick={() => setShowGenerator(true)}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <Zap className="w-5 h-5" />
+                Try Free Demo →
+              </button>
+              <button 
+                onClick={() => setShowEmailGenerator(true)}
+                className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <Mail className="w-5 h-5" />
+                📧 Email Sequences
+              </button>
+            </motion.div>
+
+            {/* BUTTONS ROW 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            >
+              <button 
+                onClick={scrollToBonusProducts}
+                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <Gift className="w-5 h-5" />
+                🎁 $1,382 Bonus Pack
+              </button>
+              <button 
+                onClick={scrollToPromptLibrary}
+                className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <BookOpen className="w-5 h-5" />
+                📚 AI Prompt Library
+              </button>
+              <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
+                <Play className="w-5 h-5" />
+                Watch Demo Video
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap justify-center gap-8 text-sm text-gray-600"
+            >
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>Generate 3 reviews free</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>Cancel anytime</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="features" id="features">
-        <div className="section-title">
-          <h2>Why Choose <span style={{ color: '#667eea' }}>Review Profits Pro?</span></h2>
-          <p>Our advanced AI technology analyzes product sales pages and creates authentic, high-converting reviews that drive real results.</p>
-        </div>
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div key={index} className="card">
-              <div style={{ fontSize: '2rem', marginBottom: '16px' }}>{feature.icon}</div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '12px', color: '#1a202c' }}>
-                {feature.title}
-              </h3>
-              <p style={{ color: '#666', lineHeight: '1.6' }}>{feature.description}</p>
-            </div>
-          ))}
+      <section id="features" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Why Choose <span className="text-blue-600">Review Profits Pro?</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our advanced AI technology analyzes product sales pages and creates authentic, 
+              high-converting reviews that drive real results.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section style={{ padding: '80px 20px', background: '#f8fafc' }}>
-        <div className="section-title">
-          <h2>How It <span style={{ color: '#764ba2' }}>Works</span></h2>
-          <p>Generate professional product reviews in just 3 simple steps</p>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
-          {[
-            { step: "01", title: "Paste Product URL", description: "Simply paste the sales page URL of any product you want to review", icon: "🎯" },
-            { step: "02", title: "AI Analysis", description: "Our AI analyzes the page content, features, benefits, and pricing", icon: "⚡" },
-            { step: "03", title: "Get Your Review", description: "Receive a comprehensive, SEO-optimized review ready to publish", icon: "⭐" }
-          ].map((item, index) => (
-            <div key={index} style={{ textAlign: 'center' }}>
-              <div style={{ 
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-                color: 'white', 
-                width: '80px', 
-                height: '80px', 
-                borderRadius: '50%', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
-                margin: '0 auto 24px',
-                fontSize: '2rem'
-              }}>
-                {item.icon}
-              </div>
-              <div style={{ fontSize: '0.875rem', fontWeight: '600', color: '#667eea', marginBottom: '8px' }}>
-                STEP {item.step}
-              </div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '12px', color: '#1a202c' }}>
-                {item.title}
-              </h3>
-              <p style={{ color: '#666' }}>{item.description}</p>
-            </div>
-          ))}
+      <section id="how-it-works" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              How It <span className="text-purple-600">Works</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Generate professional product reviews in just 3 simple steps
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                step: "01",
+                title: "Paste Product URL",
+                description: "Simply paste the sales page URL of any product you want to review",
+                icon: <Target className="w-8 h-8" />
+              },
+              {
+                step: "02", 
+                title: "AI Analysis",
+                description: "Our AI analyzes the page content, features, benefits, and pricing",
+                icon: <Zap className="w-8 h-8" />
+              },
+              {
+                step: "03",
+                title: "Get Your Review", 
+                description: "Receive a comprehensive, SEO-optimized review ready to publish",
+                icon: <Star className="w-8 h-8" />
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="text-center"
+              >
+                <div className="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  {item.icon}
+                </div>
+                <div className="text-blue-600 font-bold text-sm mb-2">STEP {item.step}</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                <p className="text-gray-600 text-lg">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* Bonus Products Section */}
+      <div id="bonus-products">
+        <BonusProducts />
+      </div>
+
+      {/* Prompt Library Section */}
+      <div id="prompt-library">
+        <PromptLibrary />
+      </div>
+
       {/* Pricing Section */}
-      <section className="pricing" id="pricing">
-        <div className="section-title">
-          <h2>Choose Your <span style={{ color: '#667eea' }}>Plan</span></h2>
-          <p>Start free, scale as you grow. All plans include our core AI review generation features.</p>
-        </div>
-        <div className="pricing-grid">
-          {pricingPlans.map((plan, index) => (
-            <div key={index} className={`pricing-card ${plan.popular ? 'popular' : ''}`}>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '8px', color: '#1a202c' }}>
-                {plan.name}
-              </h3>
-              <p style={{ color: '#666', marginBottom: '24px' }}>{plan.description}</p>
-              <div style={{ marginBottom: '32px' }}>
-                <span style={{ fontSize: '3rem', fontWeight: '700', color: '#1a202c' }}>{plan.price}</span>
-                <span style={{ color: '#666' }}>{plan.period}</span>
-              </div>
-              <ul style={{ listStyle: 'none', marginBottom: '32px', textAlign: 'left' }}>
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                    <span style={{ color: '#10b981' }}>✓</span>
-                    <span style={{ color: '#4a5568' }}>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button className={`btn ${plan.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%' }}>
-                Get Started
-              </button>
-            </div>
-          ))}
+      <section id="pricing" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Choose Your <span className="text-blue-600">Plan</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Start free, scale as you grow. All plans include our core AI review generation features.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pricingPlans.map((plan, index) => (
+              <PricingCard
+                key={index}
+                name={plan.name}
+                price={plan.price}
+                period={plan.period}
+                description={plan.description}
+                features={plan.features}
+                popular={plan.popular}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section style={{ 
-        padding: '80px 20px', 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-        color: 'white', 
-        textAlign: 'center' 
-      }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '24px' }}>
-          Ready to 10X Your Affiliate Revenue?
-        </h2>
-        <p style={{ fontSize: '1.25rem', marginBottom: '32px', maxWidth: '600px', margin: '0 auto 32px' }}>
-          Join thousands of successful affiliate marketers who are already using Product Review Profits Pro.
-        </p>
-        <button 
-          className="btn"
-          onClick={() => setShowGenerator(true)}
-          style={{ 
-            background: 'white', 
-            color: '#667eea', 
-            padding: '16px 32px',
-            fontSize: '1.125rem'
-          }}
-        >
-          Start Your Free Trial →
-        </button>
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to 10X Your Affiliate Revenue?
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              Join thousands of successful affiliate marketers who are already using 
+              Product Review Profits Pro to generate high-converting reviews.
+            </p>
+            <button 
+              onClick={() => setShowGenerator(true)}
+              className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto"
+            >
+              Start Your Free Trial
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </motion.div>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ background: '#1a202c', color: 'white', padding: '48px 20px', textAlign: 'center' }}>
-        <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '16px' }}>Product Review Profits Pro</h3>
-        <p style={{ color: '#a0aec0', marginBottom: '24px' }}>
-          The ultimate AI-powered review generator for affiliate marketers
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '32px', flexWrap: 'wrap' }}>
-          <a href="#" style={{ color: '#a0aec0', textDecoration: 'none' }}>Privacy Policy</a>
-          <a href="#" style={{ color: '#a0aec0', textDecoration: 'none' }}>Terms of Service</a>
-          <a href="#" style={{ color: '#a0aec0', textDecoration: 'none' }}>Contact</a>
-        </div>
-        <div style={{ paddingTop: '32px', borderTop: '1px solid #2d3748', color: '#a0aec0', fontSize: '0.875rem' }}>
-          © 2024 Product Review Profits Pro. All rights reserved.
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+                <Star className="w-6 h-6" />
+              </div>
+              <span className="text-2xl font-bold">Product Review Profits Pro</span>
+            </div>
+            <p className="text-gray-400 mb-8">
+              The ultimate AI-powered review generator for affiliate marketers
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 mb-8">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Support</a>
+            </div>
+            <div className="border-t border-gray-800 pt-8">
+              <p className="text-gray-400 text-sm">
+                © 2024 Product Review Profits Pro. All rights reserved.
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
 
       {/* Review Generator Modal */}
       {showGenerator && (
-        <div className="modal" onClick={() => setShowGenerator(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <ReviewGenerator onClose={() => setShowGenerator(false)} />
+      )}
+
+      {/* Email Generator Modal */}
+      {showEmailGenerator && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+          >
             {/* Header */}
-            <div style={{ 
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', 
-              color: 'white', 
-              padding: '24px',
-              borderRadius: '12px 12px 0 0'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '8px' }}>AI Review Generator</h2>
-                  <p style={{ opacity: 0.9 }}>Transform any product page into a compelling review</p>
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white p-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="bg-white/20 p-3 rounded-xl">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold">📧 Email Sequence Generator</h2>
+                    <p className="text-green-100">Create high-converting email campaigns for your products</p>
+                  </div>
                 </div>
-                <button 
-                  onClick={() => setShowGenerator(false)}
-                  style={{ 
-                    background: 'rgba(255,255,255,0.2)', 
-                    border: 'none', 
-                    color: 'white', 
-                    padding: '8px', 
-                    borderRadius: '6px',
-                    cursor: 'pointer'
-                  }}
+                <button
+                  onClick={() => setShowEmailGenerator(false)}
+                  className="p-2 hover:bg-white/20 rounded-lg transition-colors text-2xl"
                 >
                   ✕
                 </button>
               </div>
-
-              {/* Progress Steps */}
-              <div style={{ display: 'flex', alignItems: 'center', marginTop: '24px', gap: '16px' }}>
-                {[1, 2, 3, 4].map((stepNum) => (
-                  <div key={stepNum} style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '0.875rem',
-                      fontWeight: '600',
-                      background: step >= stepNum ? 'white' : 'rgba(255,255,255,0.3)',
-                      color: step >= stepNum ? '#667eea' : 'white'
-                    }}>
-                      {step > stepNum ? '✓' : stepNum}
-                    </div>
-                    {stepNum < 4 && (
-                      <div style={{
-                        width: '48px',
-                        height: '4px',
-                        marginLeft: '8px',
-                        background: step > stepNum ? 'white' : 'rgba(255,255,255,0.3)',
-                        borderRadius: '2px'
-                      }} />
-                    )}
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Content */}
-            <div style={{ padding: '32px' }}>
-              {step === 1 && (
-                <div>
-                  <div style={{ marginBottom: '24px' }}>
-                    <label style={{ display: 'block', fontWeight: '500', marginBottom: '8px', color: '#374151' }}>
-                      Product Sales Page URL
-                    </label>
-                    <input
-                      type="url"
-                      value={url}
-                      onChange={(e) => setUrl(e.target.value)}
-                      placeholder="https://example.com/product-page"
-                      style={{
-                        width: '100%',
-                        padding: '12px 16px',
-                        border: '2px solid #e5e7eb',
-                        borderRadius: '8px',
-                        fontSize: '1rem',
-                        outline: 'none'
-                      }}
-                      onFocus={(e) => e.target.style.borderColor = '#667eea'}
-                      onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
-                    />
-                  </div>
+            <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                <div className="flex items-center gap-2 text-green-700 mb-2">
+                  <CheckCircle className="w-5 h-5" />
+                  <span className="font-semibold">Email Sequence Generated Successfully!</span>
+                </div>
+                <p className="text-green-600 text-sm">
+                  Your 3-email campaign is ready. Copy the content and use it in your email marketing platform.
+                </p>
+              </div>
 
-                  <div style={{ marginBottom: '24px' }}>
-                    <label style={{ display: 'block', fontWeight: '500', marginBottom: '12px', color: '#374151' }}>
-                      Review Type
-                    </label>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
-                      {[
-                        { id: 'detailed', name: 'Detailed Review', desc: 'Comprehensive analysis with pros/cons' },
-                        { id: 'quick', name: 'Quick Review', desc: 'Concise overview for busy readers' },
-                        { id: 'comparison', name: 'Comparison Review', desc: 'Compare with similar products' },
-                        { id: 'buyer-guide', name: 'Buyer\'s Guide', desc: 'Help readers make decisions' }
-                      ].map((type) => (
-                        <button
-                          key={type.id}
-                          onClick={() => setReviewType(type.id)}
-                          style={{
-                            padding: '16px',
-                            border: `2px solid ${reviewType === type.id ? '#667eea' : '#e5e7eb'}`,
-                            borderRadius: '8px',
-                            background: reviewType === type.id ? '#f0f4ff' : 'white',
-                            textAlign: 'left',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s'
-                          }}
-                        >
-                          <div style={{ fontWeight: '500', color: reviewType === type.id ? '#667eea' : '#374151' }}>
-                            {type.name}
-                          </div>
-                          <div style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '4px' }}>
-                            {type.desc}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '32px' }}>
-                    <label style={{ display: 'block', fontWeight: '500', marginBottom: '12px', color: '#374151' }}>
-                      Writing Tone
-                    </label>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '12px' }}>
-                      {[
-                        { id: 'professional', name: 'Professional', desc: 'Authoritative and trustworthy' },
-                        { id: 'casual', name: 'Casual', desc: 'Friendly and conversational' },
-                        { id: 'enthusiastic', name: 'Enthusiastic', desc: 'Excited and energetic' },
-                        { id: 'critical', name: 'Critical', desc: 'Balanced with honest critique' }
-                      ].map((toneOption) => (
-                        <button
-                          key={toneOption.id}
-                          onClick={() => setTone(toneOption.id)}
-                          style={{
-                            padding: '16px',
-                            border: `2px solid ${tone === toneOption.id ? '#764ba2' : '#e5e7eb'}`,
-                            borderRadius: '8px',
-                            background: tone === toneOption.id ? '#faf5ff' : 'white',
-                            textAlign: 'left',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s'
-                          }}
-                        >
-                          <div style={{ fontWeight: '500', color: tone === toneOption.id ? '#764ba2' : '#374151' }}>
-                            {toneOption.name}
-                          </div>
-                          <div style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '4px' }}>
-                            {toneOption.desc}
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
+              <div className="bg-gray-50 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-semibold text-gray-900">Generated Email Sequence (3 Emails)</h3>
                   <button
-                    onClick={handleGenerate}
-                    disabled={!url}
-                    className="btn btn-primary"
-                    style={{ 
-                      width: '100%', 
-                      padding: '16px',
-                      opacity: !url ? 0.5 : 1,
-                      cursor: !url ? 'not-allowed' : 'pointer'
-                    }}
+                    onClick={() => copyToClipboard(generateEmailSequence())}
+                    className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
                   >
-                    ⚡ Analyze Product Page
+                    <Mail className="w-4 h-4" />
+                    📧 Copy All
                   </button>
                 </div>
-              )}
-
-              {step === 2 && (
-                <div style={{ textAlign: 'center', padding: '48px 0' }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔄</div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '8px', color: '#374151' }}>
-                    Analyzing Product Page
-                  </h3>
-                  <p style={{ color: '#6b7280' }}>Our AI is extracting key information from the sales page...</p>
-                  <div style={{ marginTop: '24px', textAlign: 'left', maxWidth: '300px', margin: '24px auto 0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#10b981' }}>
-                      <span>✓</span> <span style={{ fontSize: '0.875rem' }}>Page content extracted</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#667eea' }}>
-                      <span>🔄</span> <span style={{ fontSize: '0.875rem' }}>Identifying key features...</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', opacity: 0.5 }}>
-                      <span>⏱️</span> <span style={{ fontSize: '0.875rem' }}>Analyzing pricing and benefits</span>
-                    </div>
-                  </div>
+                <div className="bg-white rounded-lg p-4 max-h-96 overflow-y-auto border">
+                  <pre className="whitespace-pre-wrap text-sm text-gray-700 font-mono">
+                    {generateEmailSequence()}
+                  </pre>
                 </div>
-              )}
+              </div>
 
-              {step === 3 && (
-                <div style={{ textAlign: 'center', padding: '48px 0' }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔄</div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '8px', color: '#374151' }}>
-                    Generating Your Review
-                  </h3>
-                  <p style={{ color: '#6b7280' }}>Creating a compelling, SEO-optimized review...</p>
-                  <div style={{ marginTop: '24px', textAlign: 'left', maxWidth: '300px', margin: '24px auto 0' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#10b981' }}>
-                      <span>✓</span> <span style={{ fontSize: '0.875rem' }}>Structuring content</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#10b981' }}>
-                      <span>✓</span> <span style={{ fontSize: '0.875rem' }}>Writing introduction</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#667eea' }}>
-                      <span>🔄</span> <span style={{ fontSize: '0.875rem' }}>Analyzing pros and cons...</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', opacity: 0.5 }}>
-                      <span>⏱️</span> <span style={{ fontSize: '0.875rem' }}>Finalizing review</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {step === 4 && (
-                <div>
-                  <div style={{ 
-                    background: '#f0fdf4', 
-                    border: '1px solid #bbf7d0', 
-                    borderRadius: '8px', 
-                    padding: '16px', 
-                    marginBottom: '24px' 
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#15803d', marginBottom: '8px' }}>
-                      <span>✓</span>
-                      <span style={{ fontWeight: '500' }}>Review Generated Successfully!</span>
-                    </div>
-                    <p style={{ color: '#166534', fontSize: '0.875rem' }}>
-                      Your professional product review is ready. Copy it and use it on your website or blog.
-                    </p>
-                  </div>
-
-                  <div style={{ 
-                    background: '#f9fafb', 
-                    borderRadius: '8px', 
-                    padding: '16px',
-                    marginBottom: '24px'
-                  }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                      <h3 style={{ fontWeight: '500', color: '#374151' }}>Generated Review</h3>
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <button
-                          onClick={copyToClipboard}
-                          style={{
-                            background: '#667eea',
-                            color: 'white',
-                            border: 'none',
-                            padding: '8px 16px',
-                            borderRadius: '6px',
-                            fontSize: '0.875rem',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          📋 Copy
-                        </button>
-                        <button
-                          style={{
-                            background: '#10b981',
-                            color: 'white',
-                            border: 'none',
-                            padding: '8px 16px',
-                            borderRadius: '6px',
-                            fontSize: '0.875rem',
-                            cursor: 'pointer'
-                          }}
-                        >
-                          💾 Download
-                        </button>
-                      </div>
-                    </div>
-                    <div style={{ 
-                      background: 'white', 
-                      borderRadius: '6px', 
-                      padding: '16px', 
-                      maxHeight: '400px', 
-                      overflowY: 'auto',
-                      border: '1px solid #e5e7eb',
-                      fontFamily: 'monospace',
-                      fontSize: '0.875rem',
-                      lineHeight: '1.5',
-                      whiteSpace: 'pre-wrap'
-                    }}>
-                      {generatedReview}
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', gap: '16px' }}>
-                    <button
-                      onClick={() => {
-                        setStep(1)
-                        setGeneratedReview('')
-                        setUrl('')
-                      }}
-                      style={{
-                        flex: 1,
-                        border: '2px solid #d1d5db',
-                        background: 'white',
-                        color: '#374151',
-                        padding: '12px',
-                        borderRadius: '8px',
-                        fontWeight: '500',
-                        cursor: 'pointer'
-                      }}
-                    >
-                      Generate Another
-                    </button>
-                    <button
-                      onClick={() => setShowGenerator(false)}
-                      className="btn btn-primary"
-                      style={{ flex: 1, padding: '12px' }}
-                    >
-                      Done
-                    </button>
-                  </div>
-                </div>
-              )}
+              <div className="flex gap-4 mt-6">
+                <button
+                  onClick={() => setShowEmailGenerator(false)}
+                  className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  Done
+                </button>
+              </div>
             </div>
           </div>
         </div>
